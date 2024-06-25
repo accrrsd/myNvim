@@ -1,4 +1,6 @@
 require("core.plugins")
+require("core.vim-options")
 require("plugins.prose")
 require("plugins.lualine")
 require("plugins.telescope")
+require("plugins.onedark")

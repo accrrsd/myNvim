@@ -11,6 +11,7 @@ local wezterm_config_path
 if vim.fn.has("win16") > 0 or vim.fn.has("win32") > 0 or vim.fn.has("win64") > 0 then
 	wezterm_config_path = "~\\.config\\wezterm\\wezterm.lua"
 else
+	wezterm_config_path = "~/.config/wezterm/wezterm.lua"
 end
 
 -- make work godot with NVIM

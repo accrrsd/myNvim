@@ -5,7 +5,7 @@ return {
 	config = function()
 		require("onedark").setup({
 			style = "darker",
-			--transparent = true,
+			transparent = true,
 			term_colors = true,
 			ending_tildes = false,
 			cmp_itemkind_reverse = false,

@@ -13,11 +13,6 @@ if vim.fn.has("win16") > 0 or vim.fn.has("win32") > 0 or vim.fn.has("win64") > 0
 else
 end
 
--- make work godot with NVIM
-if not IsVsCode and vim.fn.filereadable(vim.fn.getcwd() .. "/project.godot") == 1 then
-	vim.fn.serverstart("./godothost")
-end
-
 vim.api.nvim_create_user_command("Config", function()
 	vim.cmd("cd " .. vim.fn.fnamemodify(vim_config_path, ":h"))
 	vim.cmd("edit " .. vim_config_path)

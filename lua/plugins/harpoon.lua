@@ -1,31 +1,68 @@
 return {
-	"ThePrimeagen/harpoon",
-	enabled = not IsVsCode,
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
-	config = function()
-		local mark = require("harpoon.mark")
-		local ui = require("harpoon.ui")
-		vim.keymap.set("n", "<leader>hm", mark.add_file, { desc = "Mark file with harpoon" })
-		vim.keymap.set("n", "<leader>hn", ui.nav_next, { desc = "Go to next harpoon mark" })
-		vim.keymap.set("n", "<leader>hp", ui.nav_prev, { desc = "Go to previous harpoon mark" })
-		vim.keymap.set("n", "<leader>ht", ui.toggle_quick_menu, { desc = "Toggle harpoon quick menu" })
+  "ThePrimeagen/harpoon",
+  enabled = not IsVsCode,
+  branch = "harpoon2",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope.nvim",
+  },
+  config = function()
+    local harpoon = require("harpoon")
+    harpoon:setup({})
 
-		vim.keymap.set("n", "<C-1>", function()
-			ui.nav_file(1)
-		end, { desc = "Go to file 1" })
-		vim.keymap.set("n", "<C-2>", function()
-			ui.nav_file(2)
-		end, { desc = "Go to file 2" })
-		vim.keymap.set("n", "<C-3>", function()
-			ui.nav_file(3)
-		end, { desc = "Go to file 3" })
-		vim.keymap.set("n", "<C-4>", function()
-			ui.nav_file(4)
-		end, { desc = "Go to file 4" })
-		vim.keymap.set("n", "<C-5>", function()
-			ui.nav_file(5)
-		end, { desc = "Go to file 5" })
-	end,
+    local conf = require("telescope.config").values
+    local function toggle_telescope(harpoon_files)
+      local file_paths = {}
+      for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+      end
+
+      require("telescope.pickers")
+          .new({}, {
+            prompt_title = "Harpoon",
+            finder = require("telescope.finders").new_table({
+              results = file_paths,
+            }),
+            previewer = conf.file_previewer({}),
+            sorter = conf.generic_sorter({}),
+          })
+          :find()
+    end
+
+    vim.keymap.set("n", "<leader>hl", function()
+      toggle_telescope(harpoon:list())
+    end, { desc = "Open harpoon list" })
+
+    vim.keymap.set("n", "<leader>hh", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end, { desc = "Open harpoon quick menu" })
+
+    vim.keymap.set("n", "<leader>hm", function()
+      harpoon:list():append()
+    end, { desc = "Mark file with harpoon" })
+
+    vim.keymap.set("n", "<leader>hr", function()
+      harpoon:list():remove()
+    end, { desc = "Remove file from harpoon" })
+
+    vim.keymap.set("n", "<leader>hf", function()
+      local num = vim.fn.input("Enter file number: ")
+      local file_num = tonumber(num)
+      if file_num then
+        harpoon:list():select(file_num)
+      else
+        print("Invalid number")
+      end
+    end, { desc = "Go to file by number" })
+
+    vim.keymap.set("n", "<leader>hR", function()
+      local num = vim.fn.input("Enter file number: ")
+      local file_num = tonumber(num)
+      if file_num then
+        harpoon:list():removeAt(file_num)
+      else
+        print("Invalid number")
+      end
+    end, { desc = "Remove file by number" })
+  end,
 }

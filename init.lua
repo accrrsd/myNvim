@@ -3,9 +3,10 @@ require("config.options")
 require("config.keymaps")
 require("config.lazy")
 require("config.customcommands")
+require("config.falldowncommands")
 
 if not IsVsCode then
-	require("onedark").load()
+  require("onedark").load()
 end
 
 -- Добавить это все в гит, но прежде локально скопировать изменения.

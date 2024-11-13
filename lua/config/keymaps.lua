@@ -32,8 +32,10 @@ Keymap("n", "<tab>l", "<C-w>k", { noremap = true, silent = true, desc = "move to
 Keymap("n", "<tab>;", "<C-w>l", { noremap = true, silent = true, desc = "move to right window" })
 
 -- Navigate buffers
--- Keymap("n", "<S-j>", ":bnext<CR>", Kopts)
--- Keymap("n", "<S-;>", ":bprevious<CR>", Kopts)
+Keymap("n", "<leader>b;", ":bnext<CR>", { noremap = true, silent = true, desc = "next buffer" })
+Keymap("n", "<leader>bj", ":bprevious<CR>", { noremap = true, silent = true, desc = "previous buffer" })
+Keymap("n", "<leader>bc", ":w|bd", { noremap = true, silent = true, desc = "close buffer" })
+Keymap("n", "<leader>bn", ":enew<CR>", { noremap = true, silent = true, desc = "new buffer" })
 
 -- Move text up and down
 Keymap("n", "<A-l>", ":m .+1<CR>==", Kopts)
@@ -117,15 +119,15 @@ Keymap("t", "<Esc><Esc>", "<C-\\><C-n>")
 Keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 if IsVsCode then
-	Keymap(
-		{ "n", "v" },
-		"<leader><leader>",
-		"<cmd>lua require('vscode').action('workbench.action.showCommands')<CR>",
-		{ silent = true }
-	)
-	Keymap("n", "zc", "<cmd>lua require('vscode').action('editor.fold')<CR>", { silent = true })
-	Keymap("n", "za", "<cmd>lua require('vscode').action('editor.toggleFold')<CR>", { silent = true })
-	Keymap("n", "zR", "<cmd>lua require('vscode').action('editor.unfoldAll')<CR>", { silent = true })
+  Keymap(
+    { "n", "v" },
+    "<leader><leader>",
+    "<cmd>lua require('vscode').action('workbench.action.showCommands')<CR>",
+    { silent = true }
+  )
+  Keymap("n", "zc", "<cmd>lua require('vscode').action('editor.fold')<CR>", { silent = true })
+  Keymap("n", "za", "<cmd>lua require('vscode').action('editor.toggleFold')<CR>", { silent = true })
+  Keymap("n", "zR", "<cmd>lua require('vscode').action('editor.unfoldAll')<CR>", { silent = true })
 end
 
 -- vs code only Keymaptings

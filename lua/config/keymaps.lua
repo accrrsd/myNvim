@@ -98,7 +98,7 @@ vim.opt.imsearch = 0
 
 --_both keymaps works, first for insert in diff language, second for change language when you already in insert mode, i prefer second
 --Keymap({ "n", "x" }, "<leader>ll", "i_<C-^>")
-Keymap("i", "<C-l>", "<C-^>", { desc = "Change language" })
+Keymap("i", "<C-/>", "<C-^>", { desc = "Change language" })
 
 -- stringify that stroke and below, DISABLED in test
 -- Keymap("n", "J", "mzJ`z")
@@ -116,18 +116,23 @@ Keymap("n", "N", "Nzzzv")
 Keymap("t", "<Esc><Esc>", "<C-\\><C-n>")
 
 -- search and replace word im on
-Keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+Keymap(
+	"n",
+	"<leader><leader>r",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ noremap = true, silent = true, desc = "Replace word inside file" }
+)
 
 if IsVsCode then
-  Keymap(
-    { "n", "v" },
-    "<leader><leader>",
-    "<cmd>lua require('vscode').action('workbench.action.showCommands')<CR>",
-    { silent = true }
-  )
-  Keymap("n", "zc", "<cmd>lua require('vscode').action('editor.fold')<CR>", { silent = true })
-  Keymap("n", "za", "<cmd>lua require('vscode').action('editor.toggleFold')<CR>", { silent = true })
-  Keymap("n", "zR", "<cmd>lua require('vscode').action('editor.unfoldAll')<CR>", { silent = true })
+	Keymap(
+		{ "n", "v" },
+		"<leader><leader>",
+		"<cmd>lua require('vscode').action('workbench.action.showCommands')<CR>",
+		{ silent = true }
+	)
+	Keymap("n", "zc", "<cmd>lua require('vscode').action('editor.fold')<CR>", { silent = true })
+	Keymap("n", "za", "<cmd>lua require('vscode').action('editor.toggleFold')<CR>", { silent = true })
+	Keymap("n", "zR", "<cmd>lua require('vscode').action('editor.unfoldAll')<CR>", { silent = true })
 end
 
 -- vs code only Keymaptings

@@ -58,6 +58,10 @@ return {
 			dashboard.button("q", "  > Quit NVIM", "<cmd>qa<CR>"),
 		}
 
+		-- if InGodotProject == true then do
+		--   dashboard.section.buttons.val.insert(1, dashboard.button("p", "GD  > Godot", "<cmd>Godot<CR>"))
+		-- end
+
 		-- Send config to alpha
 		alpha.setup(dashboard.opts)
 

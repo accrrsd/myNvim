@@ -1,39 +1,3 @@
--- return {
--- 	{
--- 		"mfussenegger/nvim-lint",
--- 		event = { "BufReadPre", "BufNewFile" },
--- 		config = function()
--- 			require("lint").linters_by_ft = {
--- 				gdscript = { "gdlint" },
--- 			}
--- 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
--- 				callback = function()
--- 					require("lint").try_lint()
--- 				end,
--- 			})
--- 		end,
--- 	},
---
--- 	{
--- 		"stevearc/conform.nvim",
--- 		config = function()
--- 			require("conform").setup({
--- 				format_on_save = {
--- 					lsp_format = "fallback",
--- 					timeout_ms = 500,
--- 				},
--- 				formatters_by_ft = {
--- 					lua = { "stylua" },
--- 					markdown = { "alex" },
--- 					gdscript = { "gdformat" },
--- 				},
--- 			})
--- 		end,
--- 	},
--- }
-
--- for now i use that, because its just work, and need only one config
-
 local async_formatting = function(bufnr)
 	bufnr = bufnr or vim.api.nvim_get_current_buf()
 	vim.lsp.buf_request(
@@ -73,7 +37,8 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.gdformat,
+				-- i think better formatter would be lsp format
+				--null_ls.builtins.formatting.gdformat,
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then

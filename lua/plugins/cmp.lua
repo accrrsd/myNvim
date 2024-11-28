@@ -52,8 +52,8 @@ return {
 				["<C-k>"] = cmp.mapping.select_next_item(), -- next suggestion
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-				["<C-e>"] = cmp.mapping.abort(), -- close completion window
+				--["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+				--["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
 			}),
 			-- sources for autocompletion
@@ -66,21 +66,22 @@ return {
 
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
+
 				format = lspkind.cmp_format({
 					maxwidth = 50,
 					ellipsis_char = "...",
 				}),
 			},
-      window = {
-        completion = cmp.config.window.bordered({
-          --border = "single",
-          -- winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-        }),
-        documentation = cmp.config.window.bordered({
-          --border = "single",
-          -- winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-        }),
-      }
+			-- winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+
+			window = {
+				documentation = cmp.config.window.bordered({
+					winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+				}),
+				completion = cmp.config.window.bordered({
+					winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+				}),
+			},
 		})
 	end,
 }

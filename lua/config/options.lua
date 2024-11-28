@@ -10,14 +10,14 @@ local options = {
 	mouse = "a", -- allow the mouse to be used in neovim
 	--pumheight = 10,                          -- pop up menu height
 	showmode = false, -- we don't need to see things like -- INSERT -- anymore
-	showtabline = 0, -- always show tabs
+	showtabline = 0, -- disable showing tabs
 	smartcase = true, -- smart case
 	smartindent = true, -- make indenting smarter again
 	splitbelow = true, -- force all horizontal splits to go below current window
 	splitright = true, -- force all vertical splits to go to the right of current window
 	swapfile = false, -- creates a swapfile
 	termguicolors = true, -- set term gui colors (most terminals support this)
-	timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
+	timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
 	updatetime = 300, -- faster completion (4000ms default)
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -41,6 +41,9 @@ local options = {
 	--
 	incsearch = true, -- search with regex
 	breakindent = true,
+	-- make stuff transparent
+	pumblend = 0,
+	winblend = 0,
 }
 
 for k, v in pairs(options) do
@@ -55,6 +58,7 @@ vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comm
 -- neovide specific
 if vim.g.neovide then
 	vim.g.neovide_transparency = 0.9
+	vim.g.neovide_background_color = "#000000"
 	vim.g.neovide_padding_top = 0
 	vim.g.neovide_padding_bottom = 0
 	vim.g.neovide_padding_right = 0

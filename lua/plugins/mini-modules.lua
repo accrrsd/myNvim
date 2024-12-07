@@ -1,6 +1,7 @@
 return {
 	{
 		"echasnovski/mini.surround",
+		enabled = not IsVsCode,
 		version = false,
 		config = function()
 			require("mini.surround").setup()
@@ -8,6 +9,7 @@ return {
 	},
 	{
 		"echasnovski/mini.comment",
+		enabled = not IsVsCode,
 		version = false,
 		config = function()
 			require("mini.comment").setup()
@@ -15,6 +17,7 @@ return {
 	},
 	{
 		"echasnovski/mini.pairs",
+		enabled = not IsVsCode,
 		version = false,
 		config = function()
 			require("mini.pairs").setup()
@@ -22,6 +25,7 @@ return {
 	},
 	{
 		"echasnovski/mini.ai",
+		enabled = not IsVsCode,
 		version = false,
 		config = function()
 			require("mini.ai").setup()

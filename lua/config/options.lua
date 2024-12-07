@@ -44,6 +44,9 @@ local options = {
 	-- make stuff transparent
 	pumblend = 0,
 	winblend = 0,
+	-- spell checking
+	spell = true,
+	spelllang = { "en_us", "ru_ru" },
 }
 
 for k, v in pairs(options) do

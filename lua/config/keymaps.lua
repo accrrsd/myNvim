@@ -108,6 +108,7 @@ Keymap(
 )
 
 if IsVsCode then
+	-- vim.api.nvim_del_keymap("n", "<C-w>")
 	Keymap(
 		{ "n", "v" },
 		"<leader><leader>",
@@ -117,4 +118,17 @@ if IsVsCode then
 	Keymap("n", "zC", "<cmd>lua require('vscode').action('editor.foldAll')<CR>", { silent = true })
 	Keymap("n", "za", "<cmd>lua require('vscode').action('editor.toggleFold')<CR>", { silent = true })
 	Keymap("n", "zO", "<cmd>lua require('vscode').action('editor.unfoldAll')<CR>", { silent = true })
+
+	Keymap(
+		"n",
+		"<leader>bc",
+		"<cmd>lua require('vscode').action('workbench.action.closeActiveEditor')<CR>",
+		{ silent = true }
+	)
+
+	Keymap("n", "<M-p>", "<cmd>lua require('vscode').action('workbench.action.nextEditor')<CR>", { silent = true })
+	Keymap("n", "<M-u>", "<cmd>lua require('vscode').action('workbench.action.previousEditor')<CR>", { silent = true })
+
+	Keymap("n", "gcc", "<cmd>lua require('vscode').action('editor.toggleLineComments')<CR>", { silent = true })
+	Keymap("v", "gc", "<cmd>lua require('vscode').action('editor.toggleLineComments')<CR>", { silent = true })
 end

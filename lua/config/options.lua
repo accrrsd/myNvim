@@ -53,6 +53,26 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+local function escape(str)
+	-- You need to escape these characters to work correctly
+	local escape_chars = [[;,."|\]]
+	return vim.fn.escape(str, escape_chars)
+end
+
+-- Recommended to use lua template string
+local en = [[`qwertyuiop[]asdfghjkl;'zxcvbnm]]
+local ru = [[ёйцукенгшщзхъфывапролджэячсмить]]
+local en_shift = [[~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>]]
+local ru_shift = [[ËЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]]
+
+vim.opt.langmap = vim.fn.join({
+	-- | `to` should be first     | `from` should be second
+	escape(ru_shift)
+		.. ";"
+		.. escape(en_shift),
+	escape(ru) .. ";" .. escape(en),
+}, ",")
+
 -- vim.opt.shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
 vim.opt.shortmess:append("c") -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches

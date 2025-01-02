@@ -6,11 +6,13 @@ require("config.customcommands")
 require("config.falldowncommands")
 
 if not IsVsCode then
-	vim.cmd("colorscheme onedark")
-	vim.cmd("highlight! link FloatBorder Normal")
-	vim.cmd("highlight! link NormalFloat Normal")
-	vim.cmd("highlight! link Pmenu Normal")
+  vim.cmd("colorscheme onedark")
+  vim.cmd("highlight! link FloatBorder Normal")
+  vim.cmd("highlight! link NormalFloat Normal")
+  vim.cmd("highlight! link Pmenu Normal")
 end
+
+require('langmapper').automapping({ global = true, buffer = true })
 
 -- Optimize load time (check it in ready distros, like lazyVim and NvChad, LunarVim and AstroVim)
 -- Разобраться с хоткеями language change key

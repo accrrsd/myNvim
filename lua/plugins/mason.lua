@@ -10,7 +10,7 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
 
-		mason.setup({})
+		mason.setup()
 
 		mason_lspconfig.setup({
 			-- list of servers for mason to install

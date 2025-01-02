@@ -9,6 +9,8 @@ return {
 			ensure_installed = {
 				"lua",
 				"gdscript",
+				"markdown",
+				"markdown_inline",
 			},
 			highlight = { enable = true, additional_vim_regex_highlighting = true },
 			-- indent = { enable = true },

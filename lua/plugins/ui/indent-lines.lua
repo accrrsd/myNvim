@@ -1,10 +1,7 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
-	enabled = not IsVsCode,
+  event = { "BufReadPost", "BufNewFile" },
 	main = "ibl",
-	---@module "ibl"
-	---@type ibl.config
-	opts = {},
 	config = function()
 		local highlight = {
 			"RainbowRed",

@@ -1,6 +1,6 @@
 return {
 	"brenoprata10/nvim-highlight-colors",
-	enabled = not IsVsCode,
+	event = "BufRead",
 	config = function()
 		require("cmp").setup({
 			formatting = {

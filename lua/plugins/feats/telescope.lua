@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
+		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local actions = require("telescope.actions")
@@ -42,6 +43,7 @@ return {
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("telescope").load_extension("ui-select")
 		end,

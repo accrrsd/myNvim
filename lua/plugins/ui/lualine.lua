@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	enabled = not IsVsCode,
+	event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons", "skwee357/nvim-prose" },
 	config = function()
 		local prose = require("nvim-prose")

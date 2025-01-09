@@ -1,1 +1,0 @@
-IsVsCode = vim.g.vscode

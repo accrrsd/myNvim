@@ -1,7 +1,6 @@
 return {
 	{
 		"navarasu/onedark.nvim",
-		enabled = not IsVsCode,
 		priority = 1000,
 		config = function()
 			require("onedark").setup({

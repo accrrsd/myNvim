@@ -1,6 +1,5 @@
 return {
 	"mfussenegger/nvim-dap",
-	enabled = not IsVsCode,
 	dependencies = {
 		{ "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
 	},

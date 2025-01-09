@@ -1,3 +1,4 @@
+-- vim.g.markdown_folding = 1
 -- buffer manager
 -- local opts = { noremap = true }
 -- local map = vim.keymap.set

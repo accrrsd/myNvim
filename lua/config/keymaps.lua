@@ -1,5 +1,5 @@
 Keymap = vim.keymap.set
-o = { noremap = true, silent = true, desc = "" }
+local o = { noremap = true, silent = true, desc = "" }
 
 -- Keymap leader key
 vim.g.mapleader = " "
@@ -13,6 +13,7 @@ Keymap("", "<Space>", "<Nop>", o)
 Keymap("n", "U", "<C-r>", o)
 
 o.desc = ""
+
 -- return to title screen
 Keymap("n", "<leader><leader>q", ":Alpha<CR>")
 

@@ -1,6 +1,6 @@
 return {
 	"gbprod/cutlass.nvim",
-	event = { "BufReadPost", "BufNewFile" },
+	event = "VeryLazy",
 	opts = {
 		cut_key = "m",
 	},

@@ -45,8 +45,8 @@ local options = {
   -- make stuff transparent
   pumblend = 0,
   winblend = 0,
-  -- spell checking
-  spell = true,
+  -- spell checking, disabled for now
+  -- spell = true,
   spelllang = { "en_us", "ru_ru" },
 }
 

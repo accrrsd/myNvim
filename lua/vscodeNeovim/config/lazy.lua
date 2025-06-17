@@ -16,11 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { import = "plugins" },
-    { import = "plugins.utils"},
-    { import = "plugins.ui" },
-    { import = "plugins.lsp" },
-    { import = "plugins.feats" },
+    { import = "vscodeNeovim.plugins.utils"},
   },
   -- automatically check for plugin updates
   checker = { enabled = true },

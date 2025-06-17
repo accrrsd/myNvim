@@ -78,13 +78,3 @@ vim.opt.langmap = vim.fn.join({
 vim.opt.shortmess:append("c")                   -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append("-")                   -- hyphenated words recognized by searches
 vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
-
--- neovide specific
-if vim.g.neovide then
-  vim.g.neovide_transparency = 0.9
-  vim.g.neovide_background_color = "#000000"
-  vim.g.neovide_padding_top = 0
-  vim.g.neovide_padding_bottom = 0
-  vim.g.neovide_padding_right = 0
-  vim.g.neovide_padding_left = 0
-end
